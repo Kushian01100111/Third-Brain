@@ -1,12 +1,12 @@
 const LocalStrategy = require("passport-local").Strategy;
-const GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
+const GoogleStrategy = require('passport-google-oauth2').Strategy;
 const mongoose = require("mongoose");
 const { countDocuments } = require("../models/User");
 const User = require("../models/User");
+const UserGoogle = require("../models/UserGoogle")
 
 module.exports = function (passport) {
-  passport.use(
-    new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
+  passport.use(new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
       User.findOne({ email: email.toLowerCase() }, (err, user) => {
         if (err) {
           return done(err);
@@ -46,12 +46,13 @@ module.exports = function (passport) {
        lastName: profile.name.familyName,
        image: profile.photos[0].value
       }
+      console.log(newUser)
       try {
-        let user = await User.findOne({googleId: profile.id})
+        let user = await UserGoogle.findOne({googleId: profile.id})
         if(user) {
             done(null, user)
         } else {
-            user = await User.create(newUser)
+            user = await UserGoogle.create(newUser)
             done(null, user)
         }
         }catch (err) {
@@ -66,5 +67,9 @@ module.exports = function (passport) {
 
   passport.deserializeUser((id, done) => {
     User.findById(id, (err, user) => done(err, user));
+  });
+
+  passport.deserializeUser((id, done) => {
+    UserGoogle.findById(id, (err, user) => done(err, user));
   });
 };

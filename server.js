@@ -57,6 +57,11 @@ app.use(flash());
 app.use("/", mainRoutes);
 app.use("/main", appRoutes);
 
+//Google callback
+app.get('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/login'}), (req,res) => {
+  res.redirect('/main')
+})
+
 //Server Running
 app.listen(process.env.PORT, () => {
   console.log("Server is running, you better catch it!");
