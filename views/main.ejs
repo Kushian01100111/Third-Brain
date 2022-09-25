@@ -1,3 +1,37 @@
 <%- include('partials/headerMain') -%>
+<section class="secundaryNavegation">
+    <ul>
+        <li><a href="#">Inbox</a></li>
+        <li><a href="<% if ({title == 'personal'}) { %>
+            /main/personal/projects
+        <% } else if ({title == 'work'}) { %>
+            /main/work/projects
+         <% } else { %>
+            /main/collage/projects
+        <% } %> ">Projects</a></li>
+        <li><a href="<% if (title == 'personal') { %>
+            /main/personal/tasks
+        <% } else if ({title == 'work'}) { %>
+            /main/work/tasks
+         <% } else { %>
+            /main/collage/tasks
+        <% } %> ">Tasks</a></li>
+        <li><a href="<% if (title == 'personal') { %>
+            /main/personal/goals
+        <% } else if ({title == 'work'}) { %>
+            /main/work/goals
+         <% } else { %>
+            /main/collage/goals
+        <% } %>">Goals</a></li>
+        <li><a href="<% if (title == 'personal') { %>
+            /main/personal/dashboard
+        <% } else if ({title == 'work'}) { %>
+            /main/work/dashboard
+         <% } else { %>
+            /main/collage/dashboard
+        <% } %>">Dashboard</a></li>
+    </ul>
+</section>
+
 
 <%- include('partials/footer') -%>

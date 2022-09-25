@@ -1,0 +1,21 @@
+.bg-main{
+    --tw-bg-opacity: 1;
+    background-color: #2E3747;
+}
+.hover\:text-sky-700:hover{
+    --tw-text-opacity: 1 !important;
+    color: #9CB068 !important;
+}
+.text-sky-800 {
+    --tw-text-opacity: 1;
+    color: #9CB068 !important;;
+}
+
+.from-sky-400 {
+    --tw-gradient-to: #9CB068 !important;
+    
+}
+
+.to-cyan-300{
+    --tw-gradient-from: #3E4727 !important;
+}

@@ -3,7 +3,7 @@ const GoogleStrategy = require('passport-google-oauth2').Strategy;
 const mongoose = require("mongoose");
 const { countDocuments } = require("../models/User");
 const User = require("../models/User");
-const UserGoogle = require("../models/UserGoogle")
+//const UserGoogle = require("../models/UserGoogle")
 
 module.exports = function (passport) {
   passport.use(new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
@@ -38,21 +38,18 @@ module.exports = function (passport) {
       callbackURL: "http://localhost:2121/auth/google/callback",
       passReqToCallback: true
     },
-    async (req,accessToken, refreshToken, profile, done) => {
+    async (req,accessToken, refreshToken,email, done) => {
       const newUser = {
-       googleId: profile.id,
-       displayName: profile.displayName,
-       firstName: profile.name.givenName,
-       lastName: profile.name.familyName,
-       image: profile.photos[0].value
+       userName: email.displayName,
+       email: email.email,
+       googleId: email.id,
       }
-      console.log(newUser)
       try {
-        let user = await UserGoogle.findOne({googleId: profile.id})
+        let user = await User.findOne({googleId: email.id})
         if(user) {
             done(null, user)
         } else {
-            user = await UserGoogle.create(newUser)
+            user = await User.create(newUser)
             done(null, user)
         }
         }catch (err) {
@@ -67,9 +64,5 @@ module.exports = function (passport) {
 
   passport.deserializeUser((id, done) => {
     User.findById(id, (err, user) => done(err, user));
-  });
-
-  passport.deserializeUser((id, done) => {
-    UserGoogle.findById(id, (err, user) => done(err, user));
   });
 };
