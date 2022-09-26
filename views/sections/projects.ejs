@@ -1,7 +1,26 @@
-<h2>In Progress</h2>
+<%- include('partials/headerMain') -%>
+<section class="secundaryNavegation">
+    <ul class="flex items-center gap-12">
+        <li><a href="/personal/inbox">Inbox</a></li>
+        <li><a href="/personal/projects/inprogress">Projects</a></li>
+        <li><a href="/personal/tasks/due">Tasks</a></li>
+        <li><a href="/personal/goals">Goals</a></li>
+        <li><a href="/personal/Dashboard">Dashboard</a></li>
+    </ul>
+    <hr>
+</section>
+<section>
+    <ul>
+        <li><a href="/personal/projects/planned"><i></i>Planned</a></li>
+        <li><a href="/personal/projects/inprogress"><i></i>In progress</a></li>
+        <li><a href="/personal/projects/completed">Completed</a></li>
+    </ul>
+    <button class="add-project">+</button>
+    <hr>
+</section>
 
-<%- include('personal')-%>
 
+<%- include('partials/footer') -%>
 
 
 
