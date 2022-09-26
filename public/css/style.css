@@ -2,6 +2,13 @@
     --tw-bg-opacity: 1;
     background-color: #2E3747;
 }
+
+.bg-mainn{
+    background-color: #2E3747;
+}
+.text-color{
+    color: #f3f3f3;
+}
 .hover\:text-sky-700:hover{
     --tw-text-opacity: 1 !important;
     color: #9CB068 !important;

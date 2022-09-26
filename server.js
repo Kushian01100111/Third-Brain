@@ -10,6 +10,10 @@ const logger = require("morgan");
 const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
 const appRoutes = require("./routes/appRoutes");
+const personalRoutes = require("./routes/personal");
+const workRoutes = require("./routes/work");
+const collegeRoutes = require("./routes/college");
+
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
@@ -56,6 +60,10 @@ app.use(flash());
 //Setup Routes For Which The Server Is Listening
 app.use("/", mainRoutes);
 app.use("/main", appRoutes);
+app.use("/personal", personalRoutes)
+app.use("/work", workRoutes)
+app.use("/college", collegeRoutes)
+
 
 //Google callback
 app.get('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/login'}), (req,res) => {
