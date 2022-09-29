@@ -10,18 +10,18 @@ module.exports={
         });
     },
     getPersonal: (req, res) =>{
-        res.render(path.join(process.cwd() + "/views" + "/sections" + "/personal"),{
-             title: "Personal",
+        res.render('main',{
+             title: "personal",
         });
     },
     getWork: (req, res) =>{
-        res.render(path.join(process.cwd() + "/views" + "/sections" + "/work"),{
-             title: "Work",
+        res.render('main',{
+             title: "work",
         });
     },
     getCollege: (req, res) =>{
-        res.render(path.join(process.cwd() + "/views" + "/sections" + "/college"),{
-             title: "College",
+        res.render('main',{
+             title: "college",
         });
     }
 };

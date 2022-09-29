@@ -1,24 +1,69 @@
 <%- include('partials/headerMain') -%>
 <section class="secundaryNavegation">
     <ul class="flex items-center gap-12">
-        <li><a href="/personal/inbox">Inbox</a></li>
-        <li><a href="/personal/projects/inprogress">Projects</a></li>
-        <li><a href="/personal/tasks/due">Tasks</a></li>
-        <li><a href="/personal/goals">Goals</a></li>
-        <li><a href="/personal/Dashboard">Dashboard</a></li>
+        <li><a href="/<%= title %>/inbox">Inbox</a></li>
+        <li><a href="/<%= title %>/projects/inprogress">Projects</a></li>
+        <li><a href="/<%= title %>/tasks/due">Tasks</a></li>
+        <li><a href="/<%= title %>/goals">Goals</a></li>
+        <li><a href="/<%= title %>/Dashboard">Dashboard</a></li>
     </ul>
     <hr>
 </section>
 <section>
-    <ul>
-        <li><a href="/personal/projects/planned"><i></i>Planned</a></li>
-        <li><a href="/personal/projects/inprogress"><i></i>In progress</a></li>
-        <li><a href="/personal/projects/completed">Completed</a></li>
-    </ul>
-    <button class="add-project">+</button>
-    <hr>
+    <div>  
+        <ul class="flex gap-12 justify-start">
+            <li><a href="/<%= title %>/projects/planned"><i></i>Planned</a></li>
+            <li><a href="/<%= title %>/projects/inprogress"><i></i>In progress</a></li>
+            <li><a href="/<%= title %>/projects/completed">Completed</a></li>
+            <div class="flex justify-end">
+                <button class="add-project">+</button>
+            </div>
+        </ul>
+        <hr>
+    </div>
 </section>
+<section class="projects">
+    <section class="project">
 
+    </section>
+    <section class="addingProject false">
+        <div class="card">
+            <h2>Create Project</h2>
+            <form action="/<%=title %>/projects/planned" enctype="multipart/form-data" method="POST">
+                <div class="inputsProject">
+                    <div class="flex flex-column">
+                        <div class="inputs flex-column"> 
+                            <label for="name">Name
+                                <input type="text" id="name" value="name" placeholder="name of the project">
+                            </label>
+                            <label for="descrip">Description
+                                <textarea name="desc" id="descrip" cols="50" rows="16" value="description" placeholder="description of the project"></textarea>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="flex flex-column">
+                        <h3>Tasks</h3>
+                        <hr>
+                        <div id="temporaryTasks">
+                        </div>
+                        <div class="flex-column">
+                            <label for="taskName">Tasks name
+                                <input type="text" id="taskName" placeholder="Task name">                        
+                            </label>
+                            <label for="taskDescrip">Tasks Description
+                                <textarea name="taskDescription" id="taskDescrip" cols="50" rows="8" placeholder="Task Description"></textarea>
+                            </label>
+                            <span id="add-subtasks" >Add Tasks to project</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex">
+                    <button type="submit" >Add Project</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</section>
 
 <%- include('partials/footer') -%>
 

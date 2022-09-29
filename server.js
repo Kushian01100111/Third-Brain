@@ -7,6 +7,7 @@ const MongoStore = require("connect-mongo")(session);
 const methodOverride = require("method-override");
 const flash = require("express-flash");
 const logger = require("morgan");
+const bodyParser =  require('body-parser')
 const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
 const appRoutes = require("./routes/appRoutes");
@@ -32,6 +33,7 @@ app.use(express.static("public"));
 
 //Body Parsing
 app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.json());
 
 //Logging
