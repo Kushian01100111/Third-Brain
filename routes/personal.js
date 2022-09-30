@@ -7,7 +7,6 @@ const goalsController = require("../controllers/personal/goals");
 const dashboardController = require("../controllers/personal/dashboard");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
-router.post('/projects/planned', ensureAuth, projectsController.postProject);
 
 router.get('/projects/inprogress', ensureAuth, projectsController.getInProgress);
 

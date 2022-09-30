@@ -14,6 +14,8 @@ const appRoutes = require("./routes/appRoutes");
 const personalRoutes = require("./routes/personal");
 const workRoutes = require("./routes/work");
 const collegeRoutes = require("./routes/college");
+const projectRoutes = require("./routes/projects");
+
 
 
 //Use .env file in config folder
@@ -63,6 +65,7 @@ app.use(flash());
 app.use("/", mainRoutes);
 app.use("/main", appRoutes);
 app.use("/personal", personalRoutes)
+app.use('/projects', projectRoutes);
 app.use("/work", workRoutes)
 app.use("/college", collegeRoutes)
 
