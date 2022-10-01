@@ -7,14 +7,12 @@ const MongoStore = require("connect-mongo")(session);
 const methodOverride = require("method-override");
 const flash = require("express-flash");
 const logger = require("morgan");
-const bodyParser =  require('body-parser')
 const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
 const appRoutes = require("./routes/appRoutes");
 const personalRoutes = require("./routes/personal");
 const workRoutes = require("./routes/work");
 const collegeRoutes = require("./routes/college");
-const projectRoutes = require("./routes/projects");
 
 
 
@@ -35,7 +33,6 @@ app.use(express.static("public"));
 
 //Body Parsing
 app.use(express.urlencoded({ extended: true }));
-app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.json());
 
 //Logging
@@ -65,7 +62,7 @@ app.use(flash());
 app.use("/", mainRoutes);
 app.use("/main", appRoutes);
 app.use("/personal", personalRoutes)
-app.use('/projects', projectRoutes);
+
 app.use("/work", workRoutes)
 app.use("/college", collegeRoutes)
 

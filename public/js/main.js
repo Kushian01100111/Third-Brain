@@ -28,6 +28,7 @@ function addSubTasks(){
             li.appendChild(name)
             li.appendChild(descr)
             li.classList += 'flex flex-row flex-spaceEnd gap-12 showLi'
+            li.setAttribute('name', 'tasks')
             descr.classList += 'italic text-slate-400'
         name.innerHTML+= subtask.name
         descr.innerHTML+= subtask.description

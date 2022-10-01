@@ -24,20 +24,31 @@
 </section>
 <section class="projects">
     <section class="project">
-
+        <% project.forEach(element => { %>
+            <a href="#">
+                <div class="sCard">
+                    <div>
+                        <h3><%= element.name%> </h3>
+                        <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700">
+                            <div class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style="width:<%= element.process %>%"> <%= element.progress %>% </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        <% }) %>
     </section>
     <section class="addingProject false">
         <div class="card">
             <h2>Create Project</h2>
-            <form method="POST" action="/projects/planned" enctype="multipart/form-data" >
+            <form method="POST" action="/<%=title%>/projects/planned" >
                 <div class="inputsProject">
                     <div class="flex flex-column">
                         <div class="inputs flex-column"> 
                             <label for="name">Name
-                                <input type="text" id="name" value="name" placeholder="name of the project">
+                                <input type="text" id="name" name="name"placeholder="name of the project">
                             </label>
                             <label for="descrip">Description
-                                <textarea name="desc" id="descrip" cols="50" rows="16" value="description" placeholder="description of the project"></textarea>
+                                <textarea name="desc" id="descrip" cols="50" rows="8" name="description" placeholder="description of the project"></textarea>
                             </label>
                         </div>
                     </div>
@@ -48,10 +59,10 @@
                         </div>
                         <div class="flex-column">
                             <label for="taskName">Tasks name
-                                <input type="text" id="taskName" placeholder="Task name">                        
+                                <input type="text" id="taskName" name="taskName" placeholder="Task name">                        
                             </label>
                             <label for="taskDescrip">Tasks Description
-                                <textarea name="taskDescription" id="taskDescrip" cols="50" rows="8" placeholder="Task Description"></textarea>
+                                <textarea name="taskDescription" id="taskDescrip" cols="50" rows="8" name="taskDescription" placeholder="Task Description"></textarea>
                             </label>
                             <span id="add-subtasks" >Add Tasks to project</span>
                         </div>
