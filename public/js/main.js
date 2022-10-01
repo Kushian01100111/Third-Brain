@@ -1,12 +1,10 @@
 //const projects = require("../../controllers/personal/projects")
 
-document.querySelector('.add-project').addEventListener('click', async () =>{
-    document.querySelector('.addingProject').classList.toggle('false')
-})
-
-document.getElementById('add-subtasks').addEventListener('click', async () =>{
-    addSubTasks()
-})
+const form = document.getElementById('onlyForm'),
+      action =  form.action.split("http://localhost:2121").slice(0,1).toString(),
+      elements = form.elements
+console.log(elements)
+console.log(typeof form)
 
 let temporarySubTasks = []
 
@@ -33,3 +31,38 @@ function addSubTasks(){
         name.innerHTML+= subtask.name
         descr.innerHTML+= subtask.description
 }
+
+
+document.querySelector('.add-project').addEventListener('click', async () =>{
+    document.querySelector('.addingProject').classList.toggle('false')
+})
+
+document.getElementById('add-subtasks').addEventListener('click', async () =>{
+    addSubTasks();
+});
+
+
+
+
+
+
+document.getElementById('submit').addEventListener('click', 
+async function apiRequest(){
+    console.log(temporarySubTasks)
+    try{
+        const response = await fetch(action,{
+            method:'POST',
+            headers:{
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body:{
+                subtasks: JSON.stringify(temporarySubTasks[0]),
+                elements: elements.value}
+        })
+        const data = await response.json()
+        console.log(data)
+    }catch(error){
+        console.log(error)
+    }
+} )
+

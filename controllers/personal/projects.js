@@ -13,6 +13,7 @@ module.exports = {
         }
     },
     postProject: async (req,res) =>{
+        console.log(req.body)
         try{
            // await SubTask.create({})
             await Projects.create({
@@ -25,7 +26,7 @@ module.exports = {
                 //tasksId://array of id of the tasks created,
             })
             console.log("Project has been added!");
-            res.render('sections/projects/planned')
+            res.send(this.getPlanned())
             } catch(err){
             console.log(err)
         }

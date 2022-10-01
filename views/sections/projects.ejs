@@ -40,7 +40,7 @@
     <section class="addingProject false">
         <div class="card">
             <h2>Create Project</h2>
-            <form method="POST" action="/<%=title%>/projects/planned" >
+            <form method="POST" action="/<%=title%>/projects/planned" id="onlyForm">
                 <div class="inputsProject">
                     <div class="flex flex-column">
                         <div class="inputs flex-column"> 
@@ -64,12 +64,13 @@
                             <label for="taskDescrip">Tasks Description
                                 <textarea name="taskDescription" id="taskDescrip" cols="50" rows="8" name="taskDescription" placeholder="Task Description"></textarea>
                             </label>
-                            <span id="add-subtasks" >Add Tasks to project</span>
+                            <span id="add-subtasks" >Add Tasks to list of tasks</span>
+                            <span id="postSubTask">ADD to the project</span>
                         </div>
                     </div>
                 </div>
                 <div class="flex">
-                    <button type="submit" >Add Project</button>
+                    <span id="submit"> Add Project</span>
                 </div>
             </form>
         </div>
