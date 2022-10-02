@@ -67,7 +67,7 @@ h1,h2,h3,h4,h5,h6{
 
 .inputsProject{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 0 20px;
     flex-direction: row;
     flex-wrap: wrap;
@@ -84,14 +84,16 @@ textarea{
 .showLi{
     list-style: inside !important;
 }
-
-.card{
+ 
+.addingProject{
     margin: 15px auto;
+    display: flex;
+    justify-content: center;
+}
+.card{
     background-color: #f3f3f3;
     border-radius: 10px;
     color: #2E3747;
-    max-width: 1240px;
-    max-height: 645px;
     padding: 10px 40px;
 }
 
@@ -107,11 +109,16 @@ textarea{
     height: 160px;
 }
 
-.project{
+.projects{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 15px;
     width: 100%;
     justify-content: space-evenly;
+}
+
+main{
+    min-height: 500px;
+    height: auto;
 }

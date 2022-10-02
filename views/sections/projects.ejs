@@ -23,19 +23,51 @@
     </div>
 </section>
 <section class="projects">
-    <section class="project">
-        <% project.forEach(element => { %>
-            <a href="#">
-                <div class="sCard">
-                    <div>
-                        <h3><%= element.name%> </h3>
-                        <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700">
-                            <div class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style="width:<%= element.process %>%"> <%= element.progress %>% </div>
+        <% project.forEach((element,i) => { %>
+                    <div class="sCard">
+                        <a href="#">    
+                        <div key="<%= element.id%> ">
+                            <h3><%= element.name%> </h3>
+                            <span class="italic text-slate-400"><%= element.description %></span>
+                            <ul>
+                                <% if (subtask) { %>
+                                    <% subtask.forEach(task => { %>
+                                        <% task.forEach(sub => { %>
+                                            <% if (sub.projectId === element.id) { %>
+                                                <li>
+                                                    <span><%= sub.name %> </span>
+                                                </li>
+                                            <% } %>
+                                        <% }) %>
+                                    <% }) %>
+                                <% } %>
+                            </ul>
+                            <div class="radial-progress" style="--value:<%=element.process%>; --size: 2rem;" class="text-blue-600"><%=element.process%>%</div>
+                            <div>
+                                <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots<%=i%>" class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600" type="button"> 
+                                    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path></svg>
+                                </button>
+                                
+                                <!-- Dropdown menu -->
+                                <div id="dropdownDots<%=i%>" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+                                    <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
+                                        <li>
+                                        <a href="/<%=title%>/projects/addTask/<%=element.id%>" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Add Task to the project</a>
+                                        </li>
+                                        <li>
+                                        <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Delete project</a>
+                                        </li>
+                                        <li>
+                                        <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit Project</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
-            </a>
         <% }) %>
+    </section>
     </section>
     <section class="addingProject false">
         <div class="card">
@@ -52,25 +84,9 @@
                             </label>
                         </div>
                     </div>
-                    <div class="flex flex-column">
-                        <h3>Tasks</h3>
-                        <hr>
-                        <div id="temporaryTasks">
-                        </div>
-                        <div class="flex-column">
-                            <label for="taskName">Tasks name
-                                <input type="text" id="taskName" name="taskName" placeholder="Task name">                        
-                            </label>
-                            <label for="taskDescrip">Tasks Description
-                                <textarea name="taskDescription" id="taskDescrip" cols="50" rows="8" name="taskDescription" placeholder="Task Description"></textarea>
-                            </label>
-                            <span id="add-subtasks" >Add Tasks to list of tasks</span>
-                            <span id="postSubTask">ADD to the project</span>
-                        </div>
-                    </div>
                 </div>
                 <div class="flex">
-                    <span id="submit"> Add Project</span>
+                    <button type="submit" >Add Project</button>
                 </div>
             </form>
         </div>
