@@ -122,3 +122,11 @@ main{
     min-height: 500px;
     height: auto;
 }
+
+.bg-green-700{
+    background-color: #3E4727 !important;
+} 
+
+.baseline{
+    align-items: baseline;
+}

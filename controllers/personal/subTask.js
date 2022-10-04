@@ -32,5 +32,35 @@ module.exports = {
             } catch(err){
             console.log(err)
         }
-    }
+    },
+    markTask: async (req,res) =>{
+        const original = req.originalUrl.split("/");
+        console.log(original)
+        try{ 
+            await Subtask.findOneAndUpdate(
+                {_id:req.params.id},
+                {$set: {completed: !Subtask.completed}});
+            res.send('testing')
+            } catch(err){
+            console.log(err)
+        }
+    },
+    getTaskManager: async (req,res) =>{
+        const cat = req.originalUrl.split("/")[1]
+        try{ 
+            const projects = await Projects.findById(req.params.id);
+            const subtasks = [];
+            const tasks = await projects.tasksId;
+                if(tasks){
+                    for (const task of tasks){
+                        const tak = await Subtask.find({_id: task, userId: req.user.id})
+                        subtasks.push(tak)
+                    }
+                }
+            res.render('sections/taskMana',{
+                title: `${cat}`, project: projects , user:req.user , subtask: subtasks.length > 0 ? subtasks : null })
+            } catch(err){
+            console.log(err)
+        }
+    },
 }

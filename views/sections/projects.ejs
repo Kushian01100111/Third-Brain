@@ -15,17 +15,13 @@
             <li><a href="/<%= title %>/projects/planned"><i></i>Planned</a></li>
             <li><a href="/<%= title %>/projects/inprogress"><i></i>In progress</a></li>
             <li><a href="/<%= title %>/projects/completed">Completed</a></li>
-            <div class="flex justify-end">
-                <button class="add-project">+</button>
-            </div>
         </ul>
         <hr>
     </div>
 </section>
 <section class="projects">
         <% project.forEach((element,i) => { %>
-                    <div class="sCard">
-                        <a href="#">    
+                    <div class="sCard">   
                         <div key="<%= element.id%> ">
                             <h3><%= element.name%> </h3>
                             <span class="italic text-slate-400"><%= element.description %></span>
@@ -55,6 +51,9 @@
                                         <a href="/<%=title%>/projects/addTask/<%=element.id%>" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Add Task to the project</a>
                                         </li>
                                         <li>
+                                            <a href="/<%=title%>/projects/editTask/<%=element.id%>" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Task manager</a>
+                                        </li>
+                                        <li>
                                         <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Delete project</a>
                                         </li>
                                         <li>
@@ -64,12 +63,10 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
                 </div>
         <% }) %>
     </section>
-    </section>
-    <section class="addingProject false">
+    <section class="addingProject">
         <div class="card">
             <h2>Create Project</h2>
             <form method="POST" action="/<%=title%>/projects/planned" id="onlyForm">
@@ -86,7 +83,7 @@
                     </div>
                 </div>
                 <div class="flex">
-                    <button type="submit" >Add Project</button>
+                    <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" >Add Project</button>
                 </div>
             </form>
         </div>
