@@ -62,7 +62,6 @@ app.use(flash());
 app.use("/", mainRoutes);
 app.use("/main", appRoutes);
 app.use("/personal", personalRoutes)
-
 app.use("/work", workRoutes)
 app.use("/college", collegeRoutes)
 
